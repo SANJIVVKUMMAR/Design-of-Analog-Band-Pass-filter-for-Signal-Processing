@@ -1,0 +1,21 @@
+
+
+
+
+t=-(2):1/512:(2-1/512);
+t=t(:);
+randn('state',7)
+a=0.25*randn(2,1);
+randn('state',19)
+b=0.25*randn(2,1);
+s=zeros(1024*2,1);
+
+for i=1:2
+    s1=a(i)*sin(2*pi*i*t);
+    %s2=b(i)*cos(2*pi*(i-0.5)*t);
+    s=s+s1;
+end
+ff=abs(fft(s',1024));
+plot(ff);
+
+
